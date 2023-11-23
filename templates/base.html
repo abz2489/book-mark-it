@@ -1,0 +1,109 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block meta %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Not just any book store. Bookmark-It allows users to save books to their reading lists and track their progress.">
+    <meta name="keywords"
+        content="books, store, bookstore, reading, wishlist, book lovers, chilren's books, fiction, non-fiction, education">
+    {% endblock %}
+
+    {% block extra_meta %}
+    {% endblock %}
+    
+    {% block corecss %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    {% endblock %}
+
+    {% block extra_css %}
+    {% endblock %}
+
+    {% block corejs %}
+    {% endblock %}
+
+    {% block extra_js %}
+    {% endblock %}
+
+    <title>Bookmark-It {% block extra_title %}{% endblock %}</title>
+    
+</head>
+
+<body>
+    <!--NAVBAR-->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="#">Bookmark-It Logo</a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sign in / Register</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Fiction</a></li>
+                            <li><a class="dropdown-item" href="#">Non-Fiction</a></li>
+                            <li><a class="dropdown-item" href="#">Young Adult</a></li>
+                            <li><a class="dropdown-item" href="#">Children's</a></li>
+                            <li><a class="dropdown-item" href="#">Education</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <i class="breadcrumb-item"></i>
+                <a href="#" class="me-2 text-black">Basket</a>
+                <i class="breadcrumb-item"></i>
+                <a href="#" class="me-2 text-black">Bookmark</a>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+        
+        {% if messages %}
+        <div class="alert alert-light">
+            <p class="text-center">Message!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></p>
+        </div>
+        {% endif %}
+
+        {% block page_header %}
+        {% endblock %}
+
+        {% block content %}
+        {% endblock %}
+
+    <!--FOOTER-->
+    <footer>
+        <div class="container">
+            <!--Social Media Links here-->
+        </div>
+        <div class="container">
+            <!--Copyright here-->
+        </div>
+    </footer>
+    {% block postloadjs %}
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
