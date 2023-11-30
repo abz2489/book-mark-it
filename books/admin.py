@@ -2,5 +2,23 @@ from django.contrib import admin
 from .models import Category, Book
 
 
-admin.site.register(Category)
-admin.site.register(Book)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = (
+        "friendly_name",
+        "name"
+    )
+class BookAdmin(admin.ModelAdmin):
+    list_display = (
+        "isbn",
+        "category",
+        "title",
+        "author",
+        "price",
+        "cover"
+    )
+
+    ordering = ("isbn",)
+
+
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Book, BookAdmin)
