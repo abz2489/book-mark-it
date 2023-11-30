@@ -1,0 +1,42 @@
+[
+  {
+    "pk": 1,
+    "model": "books.category",
+    "fields": {
+      "name": "fiction",
+      "friendly_name": "Fiction"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "books.category",
+    "fields": {
+      "name": "non-fiction",
+      "friendly_name": "Non-Fiction"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "books.category",
+    "fields": {
+      "name": "young adult",
+      "friendly_name": "Young Adult"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "books.category",
+    "fields": {
+      "name": "children's",
+      "friendly_name": "Children's"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "books.category",
+    "fields": {
+      "name": "education",
+      "friendly_name": "Education"
+    }
+  }
+]
