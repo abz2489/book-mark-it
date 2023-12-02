@@ -9,6 +9,7 @@ class CategoryAdmin(admin.ModelAdmin):
     )
 class BookAdmin(admin.ModelAdmin):
     list_display = (
+        "id",
         "isbn",
         "category",
         "title",

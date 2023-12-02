@@ -1,0 +1,26 @@
+.cover-img {
+    height: 400px;
+    width: 300px;
+}
+
+.category-badge {
+    font-size: 1rem;
+}
+
+.book-title {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.book-author {
+    font-size: 1.5rem;
+}
+
+.book-price {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.book-summary {
+    font-size: 1.10rem;
+}
