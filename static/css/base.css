@@ -1,4 +1,22 @@
-.cover-img {
+/* books.html*/
+.cover-img-sml {
+    height: 350px;
+    width: 250px;
+}
+.books-price {
+    font-size: 1.50rem; 
+}
+
+.books-title {
+    font-size: 1.40rem;
+    font-weight: 400;
+}
+
+.books-author {
+    font-size: 1.25rem;
+}
+/* book_summary.html*/
+.cover-img-med {
     height: 400px;
     width: 300px;
 }

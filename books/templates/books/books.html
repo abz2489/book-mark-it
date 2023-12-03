@@ -18,7 +18,7 @@
                             <div class="card h-100 border-0">
                                 {% if book.cover %}
                                 <a href="{% url 'book_summary' book.id %}">
-                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}{{ book.cover.url }}" alt="{{ book.title }}">
+                                    <img class="cover-img-sml card-img-top img-fluid" src="{{ MEDIA_URL }}{{ book.cover.url }}" alt="{{ book.title }}">
                                 </a>
                                 {% else %}
                                 <a href="">
@@ -29,8 +29,8 @@
                                     <p class="mb-0 badge rounded-pill text-bg-primary">{{ book.category.friendly_name}}</p>
                                 </div>
                                 <div class="card-body pb-0">
-                                    <p class="mb-0">{{ book.title}}</p>
-                                    <p class="mb-0">{{ book.author}}</p>
+                                    <p class="books-title mb-0">{{ book.title}}</p>
+                                    <p class="books-author mb-0">{{ book.author}}</p>
                                 </div>
                                 <div class="card-body pb-0">
                                     
@@ -38,7 +38,7 @@
                                 <div class="card-footer pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="lead mb-0 text-left font-weight-bold">£{{ book.price }}</p>
+                                            <p class="books-price mb-0 text-left font-weight-bold">£{{ book.price }}</p>
                                         </div>
                                     </div>
                                 </div>
