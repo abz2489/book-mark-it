@@ -1,7 +1,6 @@
 from urllib import response
 from django.test import TestCase
 from django.urls import reverse
-import books
 
 from books.models import Category, Book
 
