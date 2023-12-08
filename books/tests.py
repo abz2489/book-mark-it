@@ -55,6 +55,18 @@ class TestBook(TestCase):
 class TestBooksView(TestCase):
     """Testing the books view"""
 
+    def setUp(self):
+        self.category = Category.objects.create(name='Test Category')
+
+        self.book = Book.objects.create(
+            category=self.category,
+            title="Test Title",
+            summary="This is a test summary",
+            author="Test author",
+            isbn=123456789,
+            price=5.99
+        )
+
     def test_url(self):
         """Test if the URL, response and template used"""
         response = self.client.get("/books/")
@@ -65,6 +77,14 @@ class TestBooksView(TestCase):
         """Test if the books url name is accessible by name"""
         response = self.client.get(reverse("books"))
         self.assertEqual(response.status_code, 200)
+
+    def test_valid_search_query(self):
+        url = reverse('books') + '?q=Test'
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'books/books.html')
+        self.assertQuerySetEqual
+
         
 
 class TestBookSummaryView(TestCase):

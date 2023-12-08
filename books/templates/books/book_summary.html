@@ -7,12 +7,12 @@
         <div class="col-12 col-md-5 col-lg-3 offset-lg-2">
             <div class="image-container my-5">
                 {% if book.cover %}
-                    <a href="{{ MEDIA_URL }} {{ book.cover.url }}" target="_blank">
-                        <img class="cover-img-med img-fluid" src="{{ MEDIA_URL }} {{ book.cover.url }}" alt="{{ book.title }}">
+                    <a href="{{ MEDIA_URL }}{{ book.cover.url }}" target="_blank">
+                        <img class="cover-img-med img-fluid" src="{{ MEDIA_URL }}{{ book.cover.url }}" alt="{{ book.title }}">
                     </a>
                     {% else %}
                     <a href="">
-                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ book.title }}">
+                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}" alt="{{ book.title }}">
                     </a>
                 {% endif %}
             </div>
@@ -24,7 +24,7 @@
                 </div>
                 <p class="book-title mb-0">{{ book.title }}</p>
                 <p class="book-author mb-2">{{ book.author }}</p>
-                <p class="book-price mb-3 text-left">${{ book.price }}</p>
+                <p class="book-price mb-3 text-left">£{{ book.price }}</p>
                 <a href="" class="btn btn-primary mb-2">Add to Bag</a>
                 <p class="book-isbn mb-3 text-left"><strong>ISBN:</strong> {{ book.isbn }}</p>
                 <p class="mb-0"><strong>Summary:</strong></p>

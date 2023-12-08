@@ -87,11 +87,11 @@
                         Categories
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Fiction</a></li>
-                        <li><a class="dropdown-item" href="#">Non-Fiction</a></li>
-                        <li><a class="dropdown-item" href="#">Young Adult</a></li>
-                        <li><a class="dropdown-item" href="#">Children's</a></li>
-                        <li><a class="dropdown-item" href="#">Education</a></li>
+                        <li><a class="dropdown-item" href="{% url 'books' %}?category=non-fiction">Non-Fiction</a></li>
+                        <li><a class="dropdown-item" href="{% url 'books' %}?category=fiction">Fiction</a></li>
+                        <li><a class="dropdown-item" href="{% url 'books' %}?category=young adult">Young Adult</a></li>
+                        <li><a class="dropdown-item" href="{% url 'books' %}?category=children's">Children's</a></li>
+                        <li><a class="dropdown-item" href="{% url 'books' %}?category=education">Education</a></li>
                     </ul>
                 </li>
             </ul>

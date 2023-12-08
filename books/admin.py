@@ -18,7 +18,7 @@ class BookAdmin(admin.ModelAdmin):
         "cover"
     )
 
-    ordering = ("isbn",)
+    ordering = ("id",)
 
 
 admin.site.register(Category, CategoryAdmin)
