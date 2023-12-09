@@ -1,19 +1,29 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'books/css/books.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="sort-container container mt-4">
-    <div class="sort">
-        <h5>Sort:</h5>
-        <select onchange="optionUrl(this)" class="form-select w-25" aria-label="Default select example">
-            <option selected>Select sort option</option>
-            <option value="1" data-url="{% url 'books' %}?sort=title&direction=asc">Title</option>
-            <option value="2" data-url="{% url 'books' %}?sort=author&direction=asc">Author</option>
-            <option value="3" data-url="{% url 'books' %}?sort=price&direction=asc">Price(Low to High)</option>
-            <option value="4" data-url="{% url 'books' %}?sort=price&direction=desc">Price(High to Low)</a></option>
-        </select>
+    <div class="row align-items-end">
+        <div class="sort col-8">
+            <h5>Sort:</h5>
+            <select onchange="optionUrl(this)" class="form-select w-25" aria-label="Default select example">
+                <option selected>Select sort option</option>
+                <option value="1" data-url="{% url 'books' %}?sort=title&direction=asc">Title</option>
+                <option value="2" data-url="{% url 'books' %}?sort=author&direction=asc">Author</option>
+                <option value="3" data-url="{% url 'books' %}?sort=price&direction=asc">Price(Low to High)</option>
+                <option value="4" data-url="{% url 'books' %}?sort=price&direction=desc">Price(High to Low)</a></option>
+            </select>
+        </div>
+        <div class="col-4">
+            <p class="text-muted text-center">{{ books|length }} Books</p>
+        </div>
     </div>
 </div>
+<hr class="mt-5 mb-3">
     <div class="container-fluid">
         <div class="row">
             <div class="col text-center mt-3">
