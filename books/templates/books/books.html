@@ -2,11 +2,22 @@
 {% load static %}
 
 {% block content %}
-<div class="overlay"></div>
+<div class="sort-container container mt-4">
+    <div class="sort">
+        <h5>Sort:</h5>
+        <select onchange="optionUrl(this)" class="form-select w-25" aria-label="Default select example">
+            <option selected>Select sort option</option>
+            <option value="1" data-url="{% url 'books' %}?sort=title&direction=asc">Title</option>
+            <option value="2" data-url="{% url 'books' %}?sort=author&direction=asc">Author</option>
+            <option value="3" data-url="{% url 'books' %}?sort=price&direction=asc">Price(Low to High)</option>
+            <option value="4" data-url="{% url 'books' %}?sort=price&direction=desc">Price(High to Low)</a></option>
+        </select>
+    </div>
+</div>
     <div class="container-fluid">
         <div class="row">
             <div class="col text-center mt-3">
-                <h2 class="logo-font">Books</h2>
+                <h1 class="logo-font">Books</h1>
             </div>
         </div>
         <div class="row">
@@ -66,4 +77,9 @@
         </div>
     </div>
 
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'books/js/books.js' %}"></script>
 {% endblock %}
