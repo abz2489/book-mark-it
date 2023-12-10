@@ -1,3 +1,9 @@
+/*GLOBAL STYLES*/
+hr {
+    width: 75%;
+    margin: auto;
+}
+
 /* books.html*/
 .cover-img-sml {
     height: 350px;
