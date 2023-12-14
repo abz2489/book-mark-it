@@ -1,5 +1,7 @@
 from decimal import Decimal
 from django.conf import settings
+from django.shortcuts import get_object_or_404
+from books.models import Book
 
 
 def basket_contents(request):
@@ -7,7 +9,18 @@ def basket_contents(request):
     basket_items = []
     total_price = 0
     items = 0
+    basket = request.session.get("basket", {})
 
+    for book_id, quantity in basket.items():
+        book = get_object_or_404(Book, id=book_id)
+        total_price += quantity * book.price
+        items += quantity
+        basket_items.append({
+            "book_id": book_id,
+            "quantity": quantity,
+            "book": book,
+            "total_price": total_price
+        })
     delivery = total_price * Decimal(settings.DELIVERY_PECENTAGE / 100)
 
     grand_total = total_price + delivery
