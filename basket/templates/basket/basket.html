@@ -1,30 +1,87 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'basket/css/books.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="col text-center mt-3">
     <h1 class="logo-font">Basket</h1>
+    <hr class="mb-4">
 </div>
+    
 
-<div class="basket-container container">
-    <div class="basket-items">
-        <li class="row">
-            <div class="column">
-                <!--BOOK COVER SMALL-->
+        <div class="row px-0 mx-0">
+            <div class="col ps-0">
+                {% if basket_items %}
+                    <div class=" table-responsive">
+                        <table class="table table-sm table-borderless g-0">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">Book Title</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Qty</th>
+                                    <th scope="col">Subtotal</th>
+                                </tr>
+                            </thead>
+
+                            {% for book in basket_items %}
+                                <tr>
+                                    <td class="pb-5 pt-3 w-25 text-center">
+                                        <img class="cover-img-sml" src="{{ book.book.cover.url }}">
+                                        
+                                    </td>
+                                    <td class="w-25">
+                                        <p class="my-0"><strong>{{ book.book.title }}</strong></p>
+                                        <p class="my-0"><strong>ISBN:</strong>{{ book.book.isbn }}</p>
+                                    </td>
+                                    <td class="">
+                                        <p class="my-0">£{{ book.book.price }}</p>
+                                    </td>
+                                    <td class="">
+                                        <p class="my-0">{{ book.quantity }}</p>
+                                    </td>
+                                    <td class="w-25">
+                                        <p class="my-0">£{{ book.total_price }}</p>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            <tr align="left">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td colspan="" class="">
+                                    <h6><strong>Bag Total: £{{ total_price|floatformat:2 }}</strong></h6>
+                                    <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
+                                    <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
+                                </td>
+                            </tr>
+                            <tr align="left">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td colspan="" class="">
+                                    <a href="{% url 'books' %}" class="btn">
+                                        <span class="">Continue Shopping</span>
+                                    </a>
+                                    <a href="#" class="btn">
+                                        <span class="">Checkout</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                {% else %}
+                <p class="mb-5 lead">You forgot to add books to your basket...</p>
+                <a href="{% url 'books' %}" class="btn ">
+                    <span class="text-uppercase">Go to books</span>
+                </a>
+                {% endif %}
             </div>
-            <div class="column">
-                <!--Book TITLE-->
-                <!--BOOK AUTHOR-->
-                <!--BOOK PRICE-->
-            </div>
-            <div class="column">
-                <!--BOOK QUANTITY-->
-            </div>
-            <div class="column">
-                <!--BOOK TOTAL-->
-            </div>
-        </li>
-        <hr>
+        </div>
     </div>
-</div>
 {% endblock %}

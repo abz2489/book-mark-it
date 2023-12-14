@@ -48,3 +48,9 @@ hr {
 .book-summary {
     font-size: 1.10rem;
 }
+
+/*basket.html*/
+.cover-img-sml {
+    height: 300px;
+    width: 200px;
+}
