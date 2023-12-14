@@ -59,6 +59,13 @@
             <div class="col-1 position-absolute end-0 text-center ps-3">  
                 <a href="#" class="me-2 fs-4 text-black"><i class="bi bi-bookmark-fill"></i></a>
                 <a href="{% url 'basket' %}" class="fs-4 text-black"><i class="bi bi-basket3-fill"></i></a>
+                <p class="mb-0">
+                    {% if grand_total %}
+                        £{{ grand_total|floatformat:2 }}
+                    {% else %}
+                        £0.00
+                    {% endif %}
+                </p>
             </div>
         </div>
 
