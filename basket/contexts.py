@@ -5,7 +5,6 @@ from books.models import Book
 
 
 def basket_contents(request):
-
     basket_items = []
     total_price = 0
     items = 0
