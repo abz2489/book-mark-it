@@ -4,6 +4,10 @@ hr {
     margin: auto;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 /* books.html*/
 .cover-img-sml {
     height: 350px;
