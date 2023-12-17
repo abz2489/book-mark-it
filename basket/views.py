@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse
 
 # Create your views here.
@@ -24,7 +25,7 @@ def add_to_basket(request, book_id):
 
 def adjust_basket(request, book_id):
     """Adjust quantity of books in basket"""
-    print("Adjusting quantity....")
+    
     quantity = int(request.POST.get("quantity"))
     basket = request.session.get("basket", {})
 
@@ -34,5 +35,18 @@ def adjust_basket(request, book_id):
             basket.pop(book_id)
 
     request.session["basket"] = basket
-    print(f"quantity = {quantity}")
     return redirect(reverse("basket"))
+
+def remove_from_basket(request, book_id):
+    """Remove a selected book from the basket"""
+    print("Deleting book...")
+    try:
+        basket = request.session.get("basket", {})
+
+        basket.pop(book_id)
+        
+        request.session["basket"] = basket
+        print(f"basket = {basket}")
+        return HttpResponse(status=200)
+    except Exception as e:
+        return HttpResponse(status=500)
