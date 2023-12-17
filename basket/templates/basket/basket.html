@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load basket_tools %}
 
 {% block content %}
 <div class="col text-center mt-3">
@@ -65,7 +66,7 @@
                                         <a class="remove-item text-danger pointer float-right" type="submit" id="remove_{{ book.book_id }}"><small>Remove</small></a>
                                     </td>
                                     <td class="w-25">
-                                        <p class="my-0">£{{ book.total_price }}</p>
+                                        <p class="my-0">£{{ book.book.price | calc_subtotal:book.quantity }}</p>
                                     </td>
                                 </tr>
                             {% endfor %}
