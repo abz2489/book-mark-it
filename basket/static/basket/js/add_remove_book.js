@@ -6,8 +6,9 @@ $('.update-link').click(function(event) {
 
 // Remove item and reload on click
 $('.remove-item').click(function(event) {
-    let csrfToken = "{{ csrf_token }}";
-    let url = `/basket/remove/${bookId}`;
+    let csrfToken = $('#form input[name=csrfmiddlewaretoken]').val();
+    let bookId = $(this).attr('id').split('remove_')[1];
+    let url = `remove/${bookId}/`;
     let data = {'csrfmiddlewaretoken': csrfToken};
 
     $.post(url, data)
