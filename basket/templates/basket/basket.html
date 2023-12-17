@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'basket/css/basket.css' %}">
-{% endblock %}
-
 {% block content %}
 <div class="col text-center mt-3">
     <h1 class="logo-font">Basket</h1>
@@ -41,7 +37,7 @@
                                         <p class="my-0">£{{ book.book.price }}</p>
                                     </td>
                                     <td class="">
-                                        <form class="form" action="" method="POST">
+                                        <form method="POST" action="{% url 'adjust_basket' book.book_id %}" class="form update-form">
                                             {% csrf_token %}
                                             <div class="form-group w-50">
                                                 <div class="input-group">
@@ -64,10 +60,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a class="update-link text-info pointer me-5"><small>Update</small></a>
-                                            <a class="remove-item text-danger pointer float-right" id="remove_{{ book.book_id }}"><small>Remove</small></a>
-                                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                         </form>
+                                        <a class="update-link text-info pointer me-5"><small>Update</small></a>
+                                            <a class="remove-item text-danger pointer float-right" id="remove_{{ book.book_id }}"><small>Remove</small></a>
                                     </td>
                                     <td class="w-25">
                                         <p class="my-0">£{{ book.total_price }}</p>

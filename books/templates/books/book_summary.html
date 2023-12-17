@@ -25,7 +25,7 @@
                 <p class="book-title mb-0">{{ book.title }}</p>
                 <p class="book-author mb-2">{{ book.author }}</p>
                 <p class="book-price mb-3 text-left">£{{ book.price }}</p>
-                <form class="form" action="{% url 'add_to_basket' book.id %}" method="POST">
+                <form class="form" method="POST" action="{% url 'add_to_basket' book.id %}">
                     {% csrf_token %}
                     <p class=""><strong>Quantity:</strong></p>
                     <div class="form-group">
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <input type="submit" class="btn btn-primary mb-3" value="Add to Bag">
-                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    <input type="hidden" name="redirect_url" value="{% url 'book_summary' book.id %}">
                 </form>
                 <p class="book-isbn mb-3 text-left"><strong>ISBN:</strong> {{ book.isbn }}</p>
                 <p class="mb-0"><strong>Summary:</strong></p>
