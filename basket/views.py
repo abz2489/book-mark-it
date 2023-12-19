@@ -1,5 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse
+from django.contrib import messages
+
+from books.models import Book
 
 # Create your views here.
 def view_basket(request):
@@ -10,6 +13,8 @@ def view_basket(request):
 
 def add_to_basket(request, book_id):
     """Add book quantity to basket"""
+
+    book = Book.objects.get(id=book_id)
     quantity = int(request.POST.get("quantity"))
     redirect_url = request.POST.get("redirect_url")
     basket = request.session.get('basket', {})
@@ -18,6 +23,7 @@ def add_to_basket(request, book_id):
         basket[book_id] += quantity
     else:
         basket[book_id] = quantity
+        messages.success(request, f'Added {book.title} by {book.author} to your basket')
 
     request.session["basket"] = basket
     return redirect(redirect_url)
