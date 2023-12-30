@@ -6,3 +6,6 @@
 ## Content
 - Books, details and covers
 [Bloomsbury Publishing](https://www.bloomsbury.com/uk/)
+
+- Books main image
+[Pexels](https://www.pexels.com/photo/pile-of-assorted-novel-books-694740/)

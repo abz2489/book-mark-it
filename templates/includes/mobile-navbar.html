@@ -1,0 +1,70 @@
+<div class="container position-realtive mt-3 me-5">
+    <div class="col">
+        <button class="navbar-toggler d-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <!--SEARCH-->
+        <form method="GET" action="{% url 'books' %}" class="mt-2 d-flex w-100 d-xxl-none d-xl-none d-xxl-block d-lg-none d-xl-block" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn me-2 btn-outline-success" type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                </svg>
+            </button>
+        </form>
+
+        <!--NAVIGATION-->
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+
+            {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                    <li class="nav-item">
+                        <a href="" class="nav-link d-block d-lg-none">Product Management</a>
+                    </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a href="" class="nav-link d-block d-lg-none">My Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link d-block d-lg-none">Logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link d-block d-lg-none" href="#">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-block d-lg-none" href="#">Login</a>
+                </li>
+            {% endif %}
+
+            <li class="nav-item">
+                <a class="nav-link d-block d-lg-none active" aria-current="page" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-block d-lg-none" href="{% url 'books' %}">Books</a>
+            </li>
+            <!--CATEGORIES DROPDOWN-->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle d-block d-lg-none" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Categories
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'books' %}?category=non-fiction">Non-Fiction</a></li>
+                    <li><a class="dropdown-item" href="{% url 'books' %}?category=fiction">Fiction</a></li>
+                    <li><a class="dropdown-item" href="{% url 'books' %}?category=young adult">Young Adult</a></li>
+                    <li><a class="dropdown-item" href="{% url 'books' %}?category=children's">Children</a></li>
+                    <li><a class="dropdown-item" href="{% url 'books' %}?category=education">Education</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -12,6 +12,11 @@ hr {
     z-index: 99;
 }
 
+body {
+    color: black;
+    font-weight: 600;
+}
+
 /*toasts*/
 #toast {
     position: absolute;
@@ -23,6 +28,67 @@ hr {
     position: absolute;
     right: 5px;
 }
+
+/*base.html*/
+.nav-pills .d-block.nav-link.active {
+    background-color: #008080;
+    color: #FFFFFA;
+}
+.basket-bookmark-spend {
+    width: 5rem;
+    position: absolute;
+    top: 50%;
+    right: 6%;
+}
+
+.spend {
+    font-size: 0.85rem;
+}
+
+.message-container {
+    margin-top: 25%;
+}
+
+/*base.html MEDIA QUERIES*/
+@media only screen and (min-width: 768px) {
+    .basket-bookmark-spend {
+        top: 17%;
+        right: 3%;
+    }
+
+    .spend {
+        font-size: 1rem;
+    }
+}
+
+/*index.html*/
+.main-img-container {
+    width: 100%;
+}
+
+.main-books-img {
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: 200px;
+    background-image: url('/media/books-main-img.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*index.html MEDIA QUERIES*/
+@media only screen and (min-width: 768px) {
+    .main-books-img {
+        height: 400px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .main-books-img {
+        height: 700px;
+    }
+}
+
 /* books.html*/
 .cover-img-sml {
     height: 350px;

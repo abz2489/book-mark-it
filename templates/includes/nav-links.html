@@ -1,0 +1,45 @@
+<div class="collapse navbar-collapse w-100" id="navbarTogglerDemo01">
+    <ul class="navbar-nav nav-pills nav-fill">
+
+        {% if request.user.is_authenticated %}
+            {% if request.user.is_superuser %}
+                <li class="nav-link d-block text-body">
+                    <a href="" class="nav-link d-block">Product Management</a>
+                </li>
+            {% endif %}
+            <li class="nav-item">
+                <a href="" class="nav-link d-block text-body">My Profile</a>
+            </li>
+            <li class="nav-item">
+                <a href="" class="nav-link d-block text-body">Logout</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link d-block text-body" href="#">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-block text-body" href="#">Login</a>
+            </li>
+        {% endif %}
+
+        <li class="nav-item">
+            <a class="nav-link d-block text-body" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link d-block text-body" href="{% url 'books' %}">Books</a>
+        </li>
+        <!--CATEGORIES DROPDOWN-->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-block text-body" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categories
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'books' %}?category=non-fiction">Non-Fiction</a></li>
+                <li><a class="dropdown-item" href="{% url 'books' %}?category=fiction">Fiction</a></li>
+                <li><a class="dropdown-item" href="{% url 'books' %}?category=young adult">Young Adult</a></li>
+                <li><a class="dropdown-item" href="{% url 'books' %}?category=children's">Children</a></li>
+                <li><a class="dropdown-item" href="{% url 'books' %}?category=education">Education</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>

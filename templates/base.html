@@ -44,91 +44,71 @@
 
 <body>
     <!--NAVBAR-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container justify-content-center">
-            <div class="row">
-                <div class="col">
-                    <a class="navbar-brand" href="#">Bookmark-It Logo</a>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light text-body" id="nav">
+            <div class="container justify-content-center">
+                <div class="row">
+                    <div class="col">
+                        <a class="navbar-brand" href="#">Bookmark-It</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="container">
-            <form method="GET" action="{% url 'books' %}" class="mt-2 d-flex w-100" role="search">
-                <button class="btn me-2 btn-outline-success" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                    </svg>
-                </button>
-                <input class="form-control ms-0" type="search" placeholder="Search" aria-label="Search" name="q">
-            </form>
+                
 
-            <div class="col-1 position-absolute end-0 text-center ps-3">  
-                <a href="#" class="me-2 fs-4 text-black"><i class="bi bi-bookmark-fill"></i></a>
-                <a href="{% url 'basket' %}" class="fs-4 text-black"><i class="bi bi-basket3-fill"></i></a>
-                <p class="mb-0">
-                    {% if total_price %}
-                        £{{ total_price|floatformat:2 }}
-                    {% else %}
-                        £0.00
-                    {% endif %}
-                </p>
+            <div class="container d-none d-sm-block d-md-none d-lg-block d-sm-none d-md-block me-5">
+                <div class="col">
+                    <form method="GET" action="{% url 'books' %}" class="mt-2 d-flex w-100" role="search" id="search">
+                        <input class="form-control ms-0" type="search" placeholder="Search" aria-label="Search" name="q" id="search">
+                        <button class="btn me-2" id="search-btn" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
 
-        <div class="container position-realtive mt-3 me-5">
-            <div class="col">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
-                    aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            {% include 'includes/nav-links.html' %}
+
+            <!--<div class="container border justify-content-end">-->
+            <div class="row basket-bookmark-spend">
+                <div class="col fs-5">  
+                    <a href="#" class="pe-2"><i class="bi bi-bookmark-fill text-body"></i></a>
+                    <a href="{% url 'basket' %}" ><i class="bi bi-basket3-fill text-body"></i></a>
+                </div>
+                <div class="w-100"></div>
+                <div class="col spend">
+                    <p class="ms-4">
+                        {% if total_price %}
+                            £{{ total_price|floatformat:2 }}
+                        {% else %}
+                            £0.00
+                        {% endif %}
+                    </p>
+                </div>
             </div>
-            
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Sign in / Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'books' %}">Books</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Categories
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'books' %}?category=non-fiction">Non-Fiction</a></li>
-                        <li><a class="dropdown-item" href="{% url 'books' %}?category=fiction">Fiction</a></li>
-                        <li><a class="dropdown-item" href="{% url 'books' %}?category=young adult">Young Adult</a></li>
-                        <li><a class="dropdown-item" href="{% url 'books' %}?category=children's">Children's</a></li>
-                        <li><a class="dropdown-item" href="{% url 'books' %}?category=education">Education</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-    </nav>
+
+            {% include 'includes/mobile-navbar.html' %}
+
+        </nav>
+    </header>
         
     {% if messages %}
-    <div class="message-container">
-        {% for message in messages %}
-            {% with message.level as level %}
-                {% if level == 40 %}
-                    {% include 'includes/toasts/toast_error.html' %}
-                {% elif level == 30 %}
-                    {% include 'includes/toasts/toast_warning.html' %}
-                {% elif level == 25 %}
-                    {% include 'includes/toasts/toast_success.html' %}
-                {% else %}
-                    {% include 'includes/toasts/toast_info.html' %}
-                {% endif %}
-            {% endwith %}
-        {% endfor %}
-    </div>
-{% endif %}
+        <div class="message-container">
+            {% for message in messages %}
+                {% with message.level as level %}
+                    {% if level == 40 %}
+                        {% include 'includes/toasts/toast_error.html' %}
+                    {% elif level == 30 %}
+                        {% include 'includes/toasts/toast_warning.html' %}
+                    {% elif level == 25 %}
+                        {% include 'includes/toasts/toast_success.html' %}
+                    {% else %}
+                        {% include 'includes/toasts/toast_info.html' %}
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
+        </div>
+    {% endif %}
 
         {% block page_header %}
         {% endblock %}
@@ -147,16 +127,25 @@
     </footer>
 
     {% block postloadjs %}
-    <script type="text/javascript">
-        const getToast = document.getElementById('toast')
-        let toast = new bootstrap.Toast(getToast)
-        toast.show()
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function () {
+                
 
-        const closeToast = document.getElementById('toast-close')
-        closeToast.addEventListener('click', () => {
-            toast.hide()
-})
-    </script>
+                const href = location.href;
+                console.log(href);
+                const navLink = document.querySelectorAll("a.nav-link.d-block");
+                console.log(navLink);
+                const navLinkLength = navLink.length;
+                console.log(navLinkLength);
+                for (let i = 0; i <navLinkLength; i++) {
+                    if (navLink[i].href === href) {
+                        navLink[i].classList.add("active");
+                        navLink[i].classList.remove("text-body")
+                    }
+                }
+                console.log("Finished Executing JS!")
+            });
+        </script>
     {% endblock %}
 </body>
 
