@@ -132,18 +132,14 @@
                 
 
                 const href = location.href;
-                console.log(href);
                 const navLink = document.querySelectorAll("a.nav-link.d-block");
-                console.log(navLink);
                 const navLinkLength = navLink.length;
-                console.log(navLinkLength);
                 for (let i = 0; i <navLinkLength; i++) {
                     if (navLink[i].href === href) {
                         navLink[i].classList.add("active");
                         navLink[i].classList.remove("text-body")
                     }
                 }
-                console.log("Finished Executing JS!")
             });
         </script>
     {% endblock %}
