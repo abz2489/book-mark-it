@@ -27,12 +27,13 @@
                             {% for book in basket_items %}
                                 <tr>
                                     <td class="pb-5 pt-3 w-25 text-center">
-                                        <img class="cover-img-sml" src="{{ book.book.cover.url }}">
+                                        <!--<img class="cover-img-sml" src="{{ book.book.cover.url }}">-->
                                         
                                     </td>
                                     <td class="w-25">
                                         <p class="my-0"><strong>{{ book.book.title }}</strong></p>
-                                        <p class="my-0"><strong>ISBN:</strong>{{ book.book.isbn }}</p>
+                                        <p class="my-0"><strong>ISBN: </strong>{{ book.book.isbn }}</p>
+                                        <img class="cover-img-sml" src="{{ book.book.cover.url }}">
                                     </td>
                                     <td class="">
                                         <p class="my-0">£{{ book.book.price }}</p>
@@ -90,7 +91,7 @@
                                     <a href="{% url 'books' %}" class="btn">
                                         <span class="">Continue Shopping</span>
                                     </a>
-                                    <a href="#" class="btn">
+                                    <a href="{% url 'checkout' %}" class="btn">
                                         <span class="">Checkout</span>
                                     </a>
                                 </td>

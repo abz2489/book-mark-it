@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load static %}
+{% load basket_tools %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="col text-center mt-3">
+        <h1 class="logo-font">Checkout</h1>
+        <hr class="mb-4">
+    </div>
+
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <span>
+                    <i class="bi bi-basket3-fill text-body pe-2"></i>
+                    <span>
+                        Order Summary
+                    </span>
+                    <span>
+                        £{{ total_price|floatformat:2 }}
+                    </span>
+                </span>
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="charges-summary mb-5 px-0 w-75">
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="mb-1 mt-0 small">Book</p>
+                        </div>
+                        <div class="col-2">
+                            <p class="mb-1 mt-0 small">Qty</p>
+                        </div>
+                        <div class="col-4 col-md-3">
+                            <p class="mb-1 mt-0 small">Subtotal</p>
+                        </div>
+                    </div>
+
+                    {% for book in basket_items %}
+                        <div class="row">
+                            
+                                
+                            <div class="col-6">
+                                <p class="mb-1 mt-0 small">{{ book.book.title }}</p>
+                            </div>
+                            <div class="col-2">
+                                <p class="mb-1 mt-0 small">{{ book.quantity }}</p>
+                            </div>
+                            <div class="col-4 col-md-3">
+                                <p class="mb-1 mt-0 small">£{{ book.book.price | calc_subtotal:book.quantity }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <hr class="my-0 w-100">          
+                <div class="row text-black">
+                    <div class="col-7 col-md-4">
+                        <p class="my-0 w-100">Order Total:</p>
+                        <p class="my-0 w-100">Delivery:</p>
+                        <p class="my-0 w-100">Grand Total:</p>
+                    </div>
+                    <div class="col-3 col-md-2 ps-md-4">
+                        <p class="my-0">£{{ total_price | floatformat:2 }}</p>
+                        <p class="my-0">£{{ delivery | floatformat:2 }}</p>
+                        <p class="my-0"><strong>£{{ grand_total | floatformat:2 }}</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="col-12 col-lg-6">
+            <p class="pt-4 ps-3">Please fill out your details in the form below</p>
+            <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+                {% csrf_token %}
+                    <fieldset class="rounded px-3 mb-3">
+                        <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+                        {{ order_form.full_name | as_crispy_field }}
+                        {{ order_form.email | as_crispy_field }}
+                    </fieldset>
+                    <fieldset class="rounded px-3 mb-5">
+                        <legend class="fieldset-label small text-black px-2 w-auto">Delivery</legend>
+                        {{ order_form.phone_number | as_crispy_field }}
+                        {{ order_form.country | as_crispy_field }}
+                        {{ order_form.postcode | as_crispy_field }}
+                        {{ order_form.town_or_city | as_crispy_field }}
+                        {{ order_form.street_address1 | as_crispy_field }}
+                        {{ order_form.street_address2 | as_crispy_field }}
+                        {{ order_form.county | as_crispy_field }}
+                        <div class="form-check form-check-inline float-right mr-0">
+							{% if user.is_authenticated %}
+								<label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
+                                <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
+							{% else %}
+								<label class="form-check-label" for="id-save-info">
+                                    <a href="{% url 'account_signup' %}">Create an account</a> or 
+                                    <a href="{% url 'account_login' %}">login</a> to save this information
+                                </label>
+							{% endif %}
+						</div>
+                    </fieldset>
+                    <fieldset class="px-3">
+                        <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
+                        <!-- A Stripe card element will go here -->
+                        <div class="mb-3" id="card-element"></div>
+
+                        <!-- Used to display form errors -->
+                        <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                    </fieldset>
+
+                    <div class="mt-5 mb-2 mx-4">                    
+						<a href="{% url 'basket' %}" class="btn rounded-0 ms-4 me-3" id="btn-adjust">
+							<span class="font-weight-bold">Amend Order</span>
+						</a>
+						<button id="submit-button" class="btn rounded-0 btn-success" id="btn-submit">
+							<span class="font-weight-bold">Complete Order</span>
+							<span class="icon">
+								<i class=""></i>
+							</span>
+						</button>
+					</div>
+                </form>
+            </div>
+        </div>
+{% endblock %}

@@ -30,6 +30,15 @@ body {
 }
 
 /*base.html*/
+button.navbar-toggler.d-block.d-lg-none {
+    color: #008080;
+    background-color: #008080;
+}
+
+span.navbar-toggler-icon {
+    color: #FFFFFA;
+}
+
 .nav-pills .d-block.nav-link.active {
     background-color: #008080;
     color: #FFFFFA;
@@ -136,6 +145,21 @@ body {
 
 /*basket.html*/
 .cover-img-sml {
-    height: 300px;
-    width: 200px;
+    height: 150px;
+    width: 100px;
 }
+
+th {
+    text-decoration: underline;
+}
+
+/*checkout.html*/
+.accordion#accordion-example {
+    background-color: #008080;
+}
+
+#btn-adjust, #btn-submit {
+    background-color: #008080;
+    color: #FFFFFA;
+}
+
