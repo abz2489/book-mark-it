@@ -68,6 +68,10 @@ span.navbar-toggler-icon {
     .spend {
         font-size: 1rem;
     }
+    form > button.btn {
+        background-color: #008080;
+        color: #FFFFFA;
+    }
 }
 
 /*index.html*/
@@ -100,9 +104,18 @@ span.navbar-toggler-icon {
 
 /* books.html*/
 .cover-img-sml {
-    height: 350px;
-    width: 250px;
+    height: 300px;
+    width: 225px;
 }
+
+p.badge.rounded-pill {
+    background-color: #008080;
+}
+
+div.card-footer.pt-0.border-0.text-left {
+    background-color: #FFFFFA;
+}
+
 .books-price {
     font-size: 1.50rem; 
 }
@@ -144,7 +157,7 @@ span.navbar-toggler-icon {
 }
 
 /*basket.html*/
-.cover-img-sml {
+.cover-img-xsml {
     height: 150px;
     width: 100px;
 }
