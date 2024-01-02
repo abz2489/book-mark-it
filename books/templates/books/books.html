@@ -6,12 +6,18 @@
 {% endblock %}
 
 {% block content %}
+<div class="row">
+    <div class="col text-center mt-3">
+        <h1 class="logo-font">Books</h1>
+    </div>
+</div>
+<hr class="mt-3 mb-3">
 <div class="sort-container container mt-4">
     <div class="row align-items-end">
         <div class="sort col-8">
             <h5>Sort:</h5>
-            <select onchange="optionUrl(this)" class="form-select w-25" aria-label="Default select example">
-                <option selected>Select sort option</option>
+            <select onchange="optionUrl(this)" class="form-select w-50" aria-label="Default select example">
+                <option selected>Select</option>
                 <option value="1" data-url="{% url 'books' %}?sort=title&direction=asc">Title</option>
                 <option value="2" data-url="{% url 'books' %}?sort=author&direction=asc">Author</option>
                 <option value="3" data-url="{% url 'books' %}?sort=price&direction=asc">Price(Low to High)</option>
@@ -23,13 +29,7 @@
         </div>
     </div>
 </div>
-<hr class="mt-5 mb-3">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col text-center mt-3">
-                <h1 class="logo-font">Books</h1>
-            </div>
-        </div>
         <div class="row">
             <div class="book-container col-10 offset-1">
                 <div class="row mt-1 mb-2"></div>
@@ -47,7 +47,7 @@
                                 </a>
                                 {% endif %}
                                 <div class="card-body pb-0">
-                                    <p class="mb-0 badge rounded-pill text-bg-primary">{{ book.category.friendly_name}}</p>
+                                    <p class="mb-0 badge rounded-pill">{{ book.category.friendly_name}}</p>
                                 </div>
                                 <div class="card-body pb-0">
                                     <p class="books-title mb-0">{{ book.title}}</p>
