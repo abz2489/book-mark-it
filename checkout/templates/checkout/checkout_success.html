@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% load basket_tools %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="col text-center mt-3">
+        <h1 class="logo-font">Thank You!</h1>
+        <p>Your order information is below. Check your
+            <strong>{{ order.email }}</strong> inbox for your confirmation.</p>
+        <hr class="mb-4">
+    </div>
+
+    <div class="card text-center">
+        <div class="card-header">
+            Order Summary
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Order Number: {{ order.order_number }}</h5>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+
+{% endblock %}

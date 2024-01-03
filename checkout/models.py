@@ -36,7 +36,11 @@ class Order(models.Model):
         Update grand total each time a line item is added,
         accounting for delivery costs.
         """
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
+        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
+        if self.order_total < settings.FREE_DELIVERY:
+            self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
+        else:
+            self.delivery_cost = 0
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
     
@@ -56,7 +60,7 @@ class Order(models.Model):
 
 class OrderLineItem(models.Model):
         order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
-        product = models.ForeignKey(Book, null=False, blank=False, on_delete=models.CASCADE)
+        book = models.ForeignKey(Book, null=False, blank=False, on_delete=models.CASCADE)
         quantity = models.IntegerField(null=False, blank=False, default=0)
         lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 

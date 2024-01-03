@@ -131,15 +131,21 @@
     {% block postloadjs %}
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function () {
-                
+                const getToast = document.getElementById('toast');
+                let toast = new bootstrap.Toast(getToast);
+                toast.show();
 
+                const closeToast = document.getElementById('toast-close');
+                closeToast.addEventListener('click', () => {
+                toast.hide();
+            })
                 const href = location.href;
                 const navLink = document.querySelectorAll("a.nav-link.d-block");
                 const navLinkLength = navLink.length;
                 for (let i = 0; i <navLinkLength; i++) {
                     if (navLink[i].href === href) {
                         navLink[i].classList.add("active");
-                        navLink[i].classList.remove("text-body")
+                        navLink[i].classList.remove("text-body");
                     }
                 }
             });

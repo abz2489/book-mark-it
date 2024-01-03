@@ -20,7 +20,13 @@ def basket_contents(request):
             "book": book,
             "total_price": total_price
         })
-    delivery = total_price * Decimal(settings.DELIVERY_PECENTAGE / 100)
+
+    if total_price < settings.FREE_DELIVERY:
+        delivery = total_price * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
+    else:
+        delivery = 0
+    
+    delivery = total_price * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
 
     grand_total = total_price + delivery
     context = {
