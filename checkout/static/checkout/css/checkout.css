@@ -35,3 +35,40 @@
     color: #000;
     border: 1px solid #000;
 }
+
+/*checkout_success.html*/
+
+.card {
+    width: 20rem;
+}
+
+@media only screen and (min-width: 768px) {
+    .card {
+        width: 30rem;
+    }
+}
+
+#loading-overlay {
+	display: none;
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 128, 128, 0.75);
+    z-index: 9999;
+}
+
+.loading-spinner {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 100%;
+    animation: loading-spinner 1.5s linear infinite;
+}
+
+@keyframes loading-spinner {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
