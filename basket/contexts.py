@@ -25,8 +25,6 @@ def basket_contents(request):
         delivery = total_price * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
     else:
         delivery = 0
-    
-    delivery = total_price * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
 
     grand_total = total_price + delivery
     context = {
