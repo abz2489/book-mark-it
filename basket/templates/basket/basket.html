@@ -78,7 +78,11 @@
                                 <td></td>
                                 <td colspan="" class="">
                                     <h6><strong>Bag Total: £{{ total_price|floatformat:2 }}</strong></h6>
-                                    <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
+                                    {% if delivery == 0 %}
+                                        <h6><strong>Free Delivery</strong></h6>
+                                    {% else %}
+                                        <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
+                                    {% endif %}
                                     <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
                                 </td>
                             </tr>
