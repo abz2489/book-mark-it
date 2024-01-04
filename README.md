@@ -3,6 +3,9 @@
 - Laura Mayock's codu article on Meta Tags.
 [Meta Tags - All your work could be for nothing!](https://www.codu.co/articles/meta-tags-all-your-work-could-be-for-nothing-32p5y-ej)
 
+- Alexander Obregon's Medium article on Bootstrap Icons - used for animation.
+[Making the Most Out of Bootstrap Icons](https://medium.com/@AlexanderObregon/making-the-most-out-of-bootstrap-icons-7e7ae93281bd#:~:text=Bootstrap%20Icons%20are%20an%20invaluable,further%20enriching%20the%20user%20experience.)
+
 ## Content
 - Books, details and covers
 [Bloomsbury Publishing](https://www.bloomsbury.com/uk/)
