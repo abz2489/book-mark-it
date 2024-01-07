@@ -44,12 +44,12 @@ INSTALLED_APPS = [
     'books',
     'basket',
     'checkout',
-    'profiles'
+    'profiles',
 
     # other_apps
     'crispy_forms',
     'crispy_bootstrap5',
-    'django_countries'
+    'django_countries',
 ]
 
 MIDDLEWARE = [
