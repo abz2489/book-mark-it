@@ -6,29 +6,30 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col text-center mt-3">
-        <h1 class="logo-font">Books</h1>
-    </div>
-</div>
-<hr class="mt-3 mb-3">
-<div class="sort-container container mt-4">
-    <div class="row align-items-end">
-        <div class="sort col-8">
-            <h5>Sort:</h5>
-            <select onchange="optionUrl(this)" class="form-select w-50" aria-label="Default select example">
-                <option selected>Select</option>
-                <option value="1" data-url="{% url 'books' %}?sort=title&direction=asc">Title</option>
-                <option value="2" data-url="{% url 'books' %}?sort=author&direction=asc">Author</option>
-                <option value="3" data-url="{% url 'books' %}?sort=price&direction=asc">Price(Low to High)</option>
-                <option value="4" data-url="{% url 'books' %}?sort=price&direction=desc">Price(High to Low)</a></option>
-            </select>
-        </div>
-        <div class="col-4">
-            <p class="text-muted text-center">{{ books|length }} Books</p>
+<div class="overlay">
+    <div class="row">
+        <div class="col text-center mt-3">
+            <h1 class="logo-font">Books</h1>
         </div>
     </div>
-</div>
+    <hr class="mt-3 mb-3">
+    <div class="sort-container container mt-4">
+        <div class="row align-items-end">
+            <div class="sort col-8">
+                <h5>Sort:</h5>
+                <select onchange="optionUrl(this)" class="form-select w-50" aria-label="Default select example">
+                    <option selected>Select</option>
+                    <option value="1" data-url="{% url 'books' %}?sort=title&direction=asc">Title</option>
+                    <option value="2" data-url="{% url 'books' %}?sort=author&direction=asc">Author</option>
+                    <option value="3" data-url="{% url 'books' %}?sort=price&direction=asc">Price(Low to High)</option>
+                    <option value="4" data-url="{% url 'books' %}?sort=price&direction=desc">Price(High to Low)</a></option>
+                </select>
+            </div>
+            <div class="col-4">
+                <p class="text-muted text-center">{{ books|length }} Books</p>
+            </div>
+        </div>
+    </div>
     <div class="container-fluid">
         <div class="row">
             <div class="book-container col-10 offset-1">
@@ -86,6 +87,8 @@
             </div>
         </div>
     </div>
+</div>
+
 
 {% endblock %}
 

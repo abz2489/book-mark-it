@@ -2,59 +2,61 @@
 {% load static %}
 
 {% block content %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 col-md-5 col-lg-3 offset-lg-2">
-            <div class="image-container my-5">
-                {% if book.cover %}
-                    <a href="{{ MEDIA_URL }}{{ book.cover.url }}" target="_blank">
-                        <img class="cover-img-med img-fluid" src="{{ MEDIA_URL }}{{ book.cover.url }}" alt="{{ book.title }}">
-                    </a>
-                    {% else %}
-                    <a href="">
-                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}" alt="{{ book.title }}">
-                    </a>
-                {% endif %}
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="mb-5 mt-md-5">
-                <div class="card-body pb-0">
-                    <p class="category-badge mb-0 badge rounded-pill text-bg-primary">{{ book.category.friendly_name}}</p>
+<div class="overlay">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-5 col-lg-3 offset-lg-2">
+                <div class="image-container my-5">
+                    {% if book.cover %}
+                        <a href="{{ MEDIA_URL }}{{ book.cover.url }}" target="_blank">
+                            <img class="cover-img-med img-fluid" src="{{ MEDIA_URL }}{{ book.cover.url }}" alt="{{ book.title }}">
+                        </a>
+                        {% else %}
+                        <a href="">
+                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}" alt="{{ book.title }}">
+                        </a>
+                    {% endif %}
                 </div>
-                <p class="book-title mb-0">{{ book.title }}</p>
-                <p class="book-author mb-2">{{ book.author }}</p>
-                <p class="book-price mb-3 text-left">£{{ book.price }}</p>
-                <form class="form" method="POST" action="{% url 'add_to_basket' book.id %}">
-                    {% csrf_token %}
-                    <p class=""><strong>Quantity:</strong></p>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <button class="decrement-qty btn btn-black rounded-0" 
-                                    data-item_id="{{ book.id }}" id="decrement-qty_{{ book.id }}">
-                                    <span class="icon">
-                                        <i class="bi bi-dash"></i>
-                                    </span>
-                                </button>
-                            </div>
-                            <input class="form-control mb-2 qty_input w-25" type="number" name="quantity" value="1" min="1" max="99" data-book_id="{{ book.id }}" id="id_qty_{{ book.id }}">
-                            <div class="input-group-append">
-                                <button class="increment-qty btn btn-black rounded-0"
-                                    data-item_id="{{ book.id }}" id="increment-qty_{{ book.id }}">
-                                    <span class="icon">
-                                        <i class="bi bi-plus"></i>
-                                    </span>
-                                </button>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="mb-5 mt-md-5">
+                    <div class="card-body pb-0">
+                        <p class="category-badge mb-0 badge rounded-pill text-bg-primary">{{ book.category.friendly_name}}</p>
+                    </div>
+                    <p class="book-title mb-0">{{ book.title }}</p>
+                    <p class="book-author mb-2">{{ book.author }}</p>
+                    <p class="book-price mb-3 text-left">£{{ book.price }}</p>
+                    <form class="form" method="POST" action="{% url 'add_to_basket' book.id %}">
+                        {% csrf_token %}
+                        <p class=""><strong>Quantity:</strong></p>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button class="decrement-qty btn btn-black rounded-0" 
+                                        data-item_id="{{ book.id }}" id="decrement-qty_{{ book.id }}">
+                                        <span class="icon">
+                                            <i class="bi bi-dash"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                                <input class="form-control mb-2 qty_input w-25" type="number" name="quantity" value="1" min="1" max="99" data-book_id="{{ book.id }}" id="id_qty_{{ book.id }}">
+                                <div class="input-group-append">
+                                    <button class="increment-qty btn btn-black rounded-0"
+                                        data-item_id="{{ book.id }}" id="increment-qty_{{ book.id }}">
+                                        <span class="icon">
+                                            <i class="bi bi-plus"></i>
+                                        </span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <input type="submit" class="btn btn-primary mb-3" value="Buy">
-                    <input type="hidden" name="redirect_url" value="{% url 'book_summary' book.id %}">
-                </form>
-                <p class="book-isbn mb-3 text-left"><strong>ISBN:</strong> {{ book.isbn }}</p>
-                <p class="mb-0"><strong>Summary:</strong></p>
-                <p class="book-summary t-3">{{ book.summary }}</p>
+                        <input type="submit" class="btn btn-primary mb-3" value="Buy">
+                        <input type="hidden" name="redirect_url" value="{% url 'book_summary' book.id %}">
+                    </form>
+                    <p class="book-isbn mb-3 text-left"><strong>ISBN:</strong> {{ book.isbn }}</p>
+                    <p class="mb-0"><strong>Summary:</strong></p>
+                    <p class="book-summary t-3">{{ book.summary }}</p>
+                </div>
             </div>
         </div>
     </div>
