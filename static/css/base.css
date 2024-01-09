@@ -1,3 +1,4 @@
+/*BOOTSTRAP STYLES*/
 .btn-primary {
     --bs-btn-color: #fff;
     --bs-btn-bg: #008080;
@@ -13,6 +14,16 @@
     --bs-btn-disabled-color: #fff;
     --bs-btn-disabled-bg: #808080;
     --bs-btn-disabled-border-color: #808080;
+}
+
+.navbar-nav {
+    --bs-nav-link-color: #FFFDEB;
+    --bs-nav-link-hover-color: #FFFDEB;;
+    --bs-nav-link-disabled-color: None;
+}
+
+.navbar {
+    --bs-navbar-toggler-transition: none;
 }
 
 /*GLOBAL STYLES*/
@@ -32,6 +43,16 @@ hr {
 body {
     color: black;
     font-weight: 600;
+    background-image: url("../../media/books-main-img.webp");
+    background-size: cover;
+}
+
+.overlay {
+    width: 85%;
+    margin: auto;
+    background-color: #FFFDEB;
+    opacity: 0.93;
+
 }
 
 /*toasts*/
@@ -47,24 +68,73 @@ body {
 }
 
 /*base.html*/
+/*mobile-navbar.html*/
 button.navbar-toggler.d-block.d-lg-none {
     color: #008080;
     background-color: #008080;
 }
 
-span.navbar-toggler-icon {
-    color: #FFFFFA;
+.offcanvas-header {
+    background-color: #01466c;
+    color: #FFFDEB;
 }
 
-.nav-pills .d-block.nav-link.active {
-    background-color: #008080;
-    color: #FFFFFA;
+.offcanvas-body {
+    background-color: #198A98;
 }
+
+button.btn-close[aria-label='Close'] {
+    color: #FFFDEB;
+}
+
+button#btn-search {
+    background-color: #CC0069;
+}
+
+svg.bi.bi-search {
+    color: #FFFDEB;
+}
+/*nav-links.html*/
+nav {
+    background-color: #198A98;
+}
+
+.navbar-brand-bg {
+    background-color: #CC0069;
+    padding: 0.5rem;
+    border: 3px solid #01466c;
+    border-radius: 5px;
+}
+
+.navbar-brand#bmi-brand {
+    color: #FFFDEB;
+    font-family: 'Saira Stencil One', sans-serif;
+    font-size: 2rem;
+}
+
+button#search-btn {
+    background-color: #CC0069;
+}
+
+.nav-link {
+    font-size: 20px;
+}
+
+i.bi.bi-bookmark-fill {
+    color: #FFFDEB;
+}
+
+i.bi.bi-basket3-fill{
+    color: #FFFDEB;
+}
+
 .basket-bookmark-spend {
     width: 5rem;
     position: absolute;
     top: 50%;
     right: 6%;
+    padding-top: 10px;
+    color: #FFFDEB;
 }
 
 .spend {
@@ -75,7 +145,7 @@ span.navbar-toggler-icon {
     margin-top: 10%;
 }
 
-/*base.html MEDIA QUERIES*/
+/*base.html & nav-links MEDIA QUERIES*/
 @media only screen and (min-width: 768px) {
     .basket-bookmark-spend {
         top: 17%;
@@ -88,6 +158,16 @@ span.navbar-toggler-icon {
     form > button.btn {
         background-color: #008080;
         color: #FFFFFA;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    a.nav-link-md {
+        display: block;
+        padding: 8px;
+        text-decoration: none;
+        color: #FFFDEB;
+        font-size: 1rem;
     }
 }
 
