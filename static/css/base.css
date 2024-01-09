@@ -26,6 +26,10 @@
     --bs-navbar-toggler-transition: none;
 }
 
+.navbar-nav .nav-link.show {
+    color: #CC0069;
+}
+
 /*GLOBAL STYLES*/
 hr {
     width: 75%;
@@ -70,8 +74,13 @@ body {
 /*base.html*/
 /*mobile-navbar.html*/
 button.navbar-toggler.d-block.d-lg-none {
-    color: #008080;
-    background-color: #008080;
+    border: 3px solid #01466c;
+    background-color: #CC0069;
+}
+
+#offcanvasNavbarLabel {
+    font-family: 'Saira Stencil One', sans-serif;
+    font-size: 2rem;
 }
 
 .offcanvas-header {
@@ -94,6 +103,16 @@ button#btn-search {
 svg.bi.bi-search {
     color: #FFFDEB;
 }
+
+a.nav-link.d-block.d-lg-none {
+    background-color: #1aa9c2;
+    font-weight: 800;
+    border-radius: 5px;
+}
+
+a.nav-link.d-block.d-lg-none:active {
+    background-color: #01466c;
+}
 /*nav-links.html*/
 nav {
     background-color: #198A98;
@@ -106,18 +125,39 @@ nav {
     border-radius: 5px;
 }
 
+.dropdown-menu {
+    background-color: #FFFDEB;
+}
+
+a.dropdown-item:hover {
+    background-color: #198A98;
+    color: #FFFDEB;
+}
+
 .navbar-brand#bmi-brand {
     color: #FFFDEB;
     font-family: 'Saira Stencil One', sans-serif;
     font-size: 2rem;
+
+    /*Hover effect @ CSS Tricks - see readme*/
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    background: linear-gradient(to right, #01466c, #01466c 50%, #fffdeb 50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200%;
+    background-position: 100%;
+    transition: background-position 500ms ease;
+}
+
+.navbar-brand#bmi-brand:hover {
+    background-position: 0 100%;
 }
 
 button#search-btn {
     background-color: #CC0069;
-}
-
-.nav-link {
-    font-size: 20px;
 }
 
 i.bi.bi-bookmark-fill {
@@ -162,14 +202,28 @@ i.bi.bi-basket3-fill{
 }
 
 @media only screen and (min-width: 1024px) {
-    a.nav-link-md {
+    a.nav-link-lg {
         display: block;
         padding: 8px;
         text-decoration: none;
         color: #FFFDEB;
-        font-size: 1rem;
-    }
+        font-size: 1.1rem;
+        font-weight: 800;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(to right, #01466c, #01466c 50%, #fffdeb 50%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200%;
+        background-position: 100%;
+        transition: background-position 500ms ease;
 }
+
+a.nav-link-lg:hover {
+    background-position: 0 100%;
+}
+    }
 
 /*index.html*/
 .main-img-container {
@@ -205,12 +259,16 @@ i.bi.bi-basket3-fill{
     width: 225px;
 }
 
+.card.h-100.border-0 {
+    background-color: #FFFDEB;
+}
+
 p.badge.rounded-pill {
-    background-color: #008080;
+    background-color: #CC0069;
 }
 
 div.card-footer.pt-0.border-0.text-left {
-    background-color: #FFFFFA;
+    background-color: #FFFDEB;
 }
 
 .books-price {
