@@ -1,36 +1,36 @@
 <div class="collapse navbar-collapse w-100" id="navbarTogglerDemo01">
-    <ul class="navbar-nav nav-pills nav-fill">
+    <ul class="navbar-nav nav-fill" id="nav-items">
 
         {% if request.user.is_authenticated %}
             {% if request.user.is_superuser %}
-                <li class="nav-link d-block text-body">
-                    <a href="" class="nav-link d-block">Product Management</a>
+                <li class="nav-item">
+                    <a href="" class="nav-link-lg">Book Manager</a>
                 </li>
             {% endif %}
             <li class="nav-item">
-                <a href="" class="nav-link d-block text-body">My Profile</a>
+                <a href="" class="nav-link-lg">My Profile</a>
             </li>
             <li class="nav-item">
-                <a href="" class="nav-link d-block text-body">Logout</a>
+                <a href="" class="nav-link-lg">Logout</a>
             </li>
         {% else %}
             <li class="nav-item">
-                <a class="nav-link d-block text-body" href="#">Register</a>
+                <a class="nav-link-lg" href="#">Register</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-block text-body" href="#">Login</a>
+                <a class="nav-link-lg" href="#">Login</a>
             </li>
         {% endif %}
 
         <li class="nav-item">
-            <a class="nav-link d-block text-body" aria-current="page" href="{% url 'home' %}">Home</a>
+            <a class="nav-link-lg" aria-current="page" href="{% url 'home' %}">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link d-block text-body" href="{% url 'books' %}">Books</a>
+            <a class="nav-link-lg" href="{% url 'books' %}">Books</a>
         </li>
         <!--CATEGORIES DROPDOWN-->
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle d-block text-body" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link-lg dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Categories
             </a>
             <ul class="dropdown-menu">
