@@ -23,38 +23,38 @@
         </form>
 
         <!--NAVIGATION-->
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mt-4">
 
             {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
-                    <li class="nav-item">
-                        <a href="" class="nav-link d-block d-lg-none">Product Management</a>
+                    <li class="nav-item mb-1">
+                        <a href="" class="nav-link d-block d-lg-none ps-2">Book Manager</a>
                     </li>
                 {% endif %}
-                <li class="nav-item">
-                    <a href="" class="nav-link d-block d-lg-none">My Profile</a>
+                <li class="nav-item mb-1">
+                    <a href="" class="nav-link d-block d-lg-none ps-2">My Profile</a>
                 </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link d-block d-lg-none">Logout</a>
+                <li class="nav-item mb-1">
+                    <a href="" class="nav-link d-block d-lg-none ps-2">Logout</a>
                 </li>
             {% else %}
-                <li class="nav-item">
-                    <a class="nav-link d-block d-lg-none" href="#">Register</a>
+                <li class="nav-item mb-1">
+                    <a class="nav-link d-block d-lg-none ps-2" href="#">Register</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link d-block d-lg-none" href="#">Login</a>
+                <li class="nav-item mb-1">
+                    <a class="nav-link d-block d-lg-none ps-2" href="#">Login</a>
                 </li>
             {% endif %}
 
-            <li class="nav-item">
-                <a class="nav-link d-block d-lg-none" aria-current="page" href="{% url 'home' %}">Home</a>
+            <li class="nav-item mb-1">
+                <a class="nav-link d-block d-lg-none ps-2" aria-current="page" href="{% url 'home' %}">Home</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link d-block d-lg-none" href="{% url 'books' %}">Books</a>
+            <li class="nav-item mb-1">
+                <a class="nav-link d-block d-lg-none ps-2" href="{% url 'books' %}">Books</a>
             </li>
             <!--CATEGORIES DROPDOWN-->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle d-block d-lg-none" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <li class="nav-item mb-1 dropdown">
+                <a class="nav-link dropdown-toggle d-block d-lg-none ps-2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Categories
                 </a>
                 <ul class="dropdown-menu">
