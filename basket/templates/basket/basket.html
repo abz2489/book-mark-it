@@ -3,114 +3,113 @@
 {% load basket_tools %}
 
 {% block content %}
-<div class="col text-center mt-3">
-    <h1 class="logo-font">Basket</h1>
-    <hr class="mb-4">
-</div>
-    
+<div class="overlay">
+    <div class="col text-center mt-3">
+        <h1 class="logo-font">Basket</h1>
+        <hr class="mb-4">
+    </div>
 
-        <div class="row px-0 mx-0">
-            <div class="col ps-0">
-                {% if basket_items %}
-                    <div class=" table-responsive">
-                        <table class="table table-sm table-borderless g-0">
-                            <thead>
-                                <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">Book Title</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Qty</th>
-                                    <th scope="col">Subtotal</th>
-                                </tr>
-                            </thead>
-
-                            {% for book in basket_items %}
-                                <tr>
-                                    <td class="pb-5 pt-3 w-25 text-center">
-                                        <!--<img class="cover-img-sml" src="{{ book.book.cover.url }}">-->
-                                        
-                                    </td>
-                                    <td class="w-25">
-                                        <p class="my-0"><strong>{{ book.book.title }}</strong></p>
-                                        <p class="my-0"><strong>ISBN: </strong>{{ book.book.isbn }}</p>
-                                        <img class="cover-img-xsml" src="{{ book.book.cover.url }}">
-                                    </td>
-                                    <td class="">
-                                        <p class="my-0">£{{ book.book.price }}</p>
-                                    </td>
-                                    <td class="">
-                                        <form method="POST" action="{% url 'adjust_basket' book.book_id %}" class="form update-form" id="form">
-                                            {% csrf_token %}
-                                            <div class="form-group w-50">
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <button class="decrement-qty btn btn-black rounded-0" 
-                                                            data-item_id="{{ book.id }}" id="decrement-qty_{{ book.id }}">
-                                                            <span class="icon">
-                                                                <i class="bi bi-dash"></i>
-                                                            </span>
-                                                        </button>
-                                                    </div>
-                                                    <input class="form-control mb-2 qty_input" type="number" name="quantity" value="{{ book.quantity }}" min="1" max="99" data-book_id="{{ book.id }}" id="id_qty_{{ book.id }}">
-                                                    <div class="input-group-append">
-                                                        <button class="increment-qty btn btn-black rounded-0"
-                                                            data-item_id="{{ book.id }}" id="increment-qty_{{ book.id }}">
-                                                            <span class="icon">
-                                                                <i class="bi bi-plus"></i>
-                                                            </span>
-                                                        </button>
-                                                    </div>
+    <div class="row px-0 mx-0">
+        <div class="col ps-0">
+            {% if basket_items %}
+                <div class=" table-responsive">
+                    <table class="table table-sm table-borderless g-0">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Book Title</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Qty</th>
+                                <th scope="col">Subtotal</th>
+                            </tr>
+                        </thead>
+                        {% for book in basket_items %}
+                            <tr>
+                                <td class="pb-5 pt-3 w-25 text-center">
+                                <!--<img class="cover-img-sml" src="{{ book.book.cover.url }}">-->
+                                </td>
+                                <td class="w-25">
+                                    <p class="my-0"><strong>{{ book.book.title }}</strong></p>
+                                    <p class="my-0"><strong>ISBN: </strong>{{ book.book.isbn }}</p>
+                                    <img class="cover-img-xsml" src="{{ book.book.cover.url }}">
+                                </td>
+                                <td class="">
+                                    <p class="my-0">£{{ book.book.price }}</p>
+                                </td>
+                                <td class="">
+                                    <form method="POST" action="{% url 'adjust_basket' book.book_id %}" class="form update-form" id="form">
+                                        {% csrf_token %}
+                                        <div class="form-group w-50">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <button class="decrement-qty btn btn-black rounded-0" 
+                                                    data-item_id="{{ book.id }}" id="decrement-qty_{{ book.id }}">
+                                                        <span class="icon">
+                                                            <i class="bi bi-dash"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                                <input class="form-control mb-2 qty_input" type="number" name="quantity" value="{{ book.quantity }}" min="1" max="99" data-book_id="{{ book.id }}" id="id_qty_{{ book.id }}">
+                                                <div class="input-group-append">
+                                                    <button class="increment-qty btn btn-black rounded-0"
+                                                    data-item_id="{{ book.id }}" id="increment-qty_{{ book.id }}">
+                                                        <span class="icon">
+                                                            <i class="bi bi-plus"></i>
+                                                        </span>
+                                                    </button>
                                                 </div>
                                             </div>
-                                        </form>
-                                        <a class="update-link text-info pointer me-5"><small>Update</small></a>
-                                        <a class="remove-item text-danger pointer float-right" type="submit" id="remove_{{ book.book_id }}"><small>Remove</small></a>
-                                    </td>
-                                    <td class="w-25">
-                                        <p class="my-0">£{{ book.book.price | calc_subtotal:book.quantity }}</p>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                            <tr align="left">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td colspan="" class="">
-                                    <h6><strong>Basket Total: £{{ total_price|floatformat:2 }}</strong></h6>
-                                    {% if delivery == 0 %}
-                                        <h6><strong>Free Delivery</strong></h6>
-                                    {% else %}
-                                        <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
-                                    {% endif %}
+                                        </div>
+                                    </form>
+                                    <a class="update-link text-info pointer me-5"><small>Update</small></a>
+                                    <a class="remove-item text-danger pointer float-right" type="submit" id="remove_{{ book.book_id }}"><small>Remove</small></a>
+                                </td>
+                                <td class="w-25">
+                                    <p class="my-0">£{{ book.book.price | calc_subtotal:book.quantity }}</p>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        <tr align="left">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td colspan="" class="">
+                                <h6><strong>Basket Total: £{{ total_price|floatformat:2 }}</strong></h6>
+                                {% if delivery == 0 %}
+                                    <h6><strong>Free Delivery</strong></h6>
+                                {% else %}
+                                    <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
+                                {% endif %}
                                     <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
-                                </td>
-                            </tr>
-                            <tr align="left">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td colspan="" class="">
-                                    <a href="{% url 'books' %}" class="btn">
-                                        <span class="">Continue Shopping</span>
-                                    </a>
-                                    <a href="{% url 'checkout' %}" class="btn">
-                                        <span class="">Checkout</span>
-                                    </a>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+                            </td>
+                        </tr>
+                        <tr align="left">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td colspan="" class="">
+                                <a href="{% url 'books' %}" class="btn">
+                                    <span class="">Continue Shopping</span>
+                                </a>
+                                <a href="{% url 'checkout' %}" class="btn">
+                                    <span class="">Checkout</span>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
                 {% else %}
-                <p class="mb-5 lead">You forgot to add books to your basket...</p>
-                <a href="{% url 'books' %}" class="btn ">
-                    <span class="text-uppercase">Go to books</span>
-                </a>
+                    <p class="mb-5 lead">You forgot to add books to your basket...</p>
+                    <a href="{% url 'books' %}" class="btn ">
+                        <span class="text-uppercase">Go to books</span>
+                    </a>
                 {% endif %}
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
 
 {% block postloadjs %}
