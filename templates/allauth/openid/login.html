@@ -11,7 +11,7 @@
 
 <form id="openid_login_form" class="openid_login ms-2" method="post" action="{% url 'openid_login' %}">
 {% csrf_token %}
-{{form.as_p}}
+{{ form|crispy }}
 <button type="submit" class="btn btn-primary ms-2">Sign In</button>
 </form>
 
