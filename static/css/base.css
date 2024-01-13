@@ -1,24 +1,39 @@
 /*BOOTSTRAP STYLES*/
+:root {
+    --bs-link-color-rgb: 26, 169, 194;
+}
+
 .btn-primary {
-    --bs-btn-color: #fff;
-    --bs-btn-bg: #008080;
-    --bs-btn-border-color: #008080;
-    --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #0b5ed7;
-    --bs-btn-hover-border-color: #0a58ca;
-    --bs-btn-focus-shadow-rgb: 49,132,253;
-    --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #0a58ca;
-    --bs-btn-active-border-color: #0a53be;
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #808080;
-    --bs-btn-disabled-border-color: #808080;
+    --bs-btn-color: #EEF7FB;
+    --bs-btn-bg: #cc0069;
+    --bs-btn-border-color: #01466c;
+    --bs-btn-hover-color: #EEF7FB;
+    --bs-btn-hover-bg: #01466c;
+    --bs-btn-hover-border-color: #cc0069;
+    --bs-btn-focus-shadow-rgb: none;
+    --bs-btn-active-color: #cc0069;
+    --bs-btn-active-bg: #01466c;
+    --bs-btn-active-border-color: #cc0069;
+    --bs-btn-active-shadow: none;
+}
+
+.btn-secondary {
+    --bs-btn-color: #01466c;
+    --bs-btn-bg: #EEF7FB;
+    --bs-btn-border-color: #01466c;
+    --bs-btn-hover-color: #EEF7FB;
+    --bs-btn-hover-bg: #01466c;
+    --bs-btn-hover-border-color: #EEF7FB;
+    --bs-btn-focus-shadow-rgb: none;
+    --bs-btn-active-color: #EEF7FB;
+    --bs-btn-active-bg: #01466c;
+    --bs-btn-active-border-color: #EEF7FB;
+    --bs-btn-active-shadow: none;
 }
 
 .navbar-nav {
-    --bs-nav-link-color: #FFFDEB;
-    --bs-nav-link-hover-color: #FFFDEB;;
+    --bs-nav-link-color: #EEF7FB;
+    --bs-nav-link-hover-color: #EEF7FB;;
     --bs-nav-link-disabled-color: None;
 }
 
@@ -30,10 +45,19 @@
     color: #CC0069;
 }
 
+.form-check-input:checked {
+    background-color: #1aa9c2;
+    border-color: #1aa9c2;
+}
+
 /*GLOBAL STYLES*/
 hr {
     width: 75%;
+    height: 5px;
     margin: auto;
+    background-color: #cc0069;
+    border-radius: 4px;
+    opacity: 100;
 }
 
 .pointer {
@@ -53,10 +77,19 @@ body {
 
 .overlay {
     width: 85%;
+    height: 100%;
     margin: auto;
-    background-color: #FFFDEB;
+    background-color: #EEF7FB;
     opacity: 0.93;
+}
 
+.text-dec-none {
+    color: #01466c;
+    text-decoration: none;
+}
+
+.text-dec-none:hover {
+    color: #EEF7FB;
 }
 
 /*toasts*/
@@ -85,7 +118,7 @@ button.navbar-toggler.d-block.d-lg-none {
 
 .offcanvas-header {
     background-color: #01466c;
-    color: #FFFDEB;
+    color: #EEF7FB;
 }
 
 .offcanvas-body {
@@ -93,7 +126,7 @@ button.navbar-toggler.d-block.d-lg-none {
 }
 
 button.btn-close[aria-label='Close'] {
-    color: #FFFDEB;
+    color: #EEF7FB;
 }
 
 button#btn-search {
@@ -101,7 +134,7 @@ button#btn-search {
 }
 
 svg.bi.bi-search {
-    color: #FFFDEB;
+    color: #EEF7FB;
 }
 
 a.nav-link.d-block.d-lg-none {
@@ -112,6 +145,10 @@ a.nav-link.d-block.d-lg-none {
 
 a.nav-link.d-block.d-lg-none:active {
     background-color: #01466c;
+}
+
+input[name="q"]::placeholder {
+    color: #4F617D;
 }
 /*nav-links.html*/
 nav {
@@ -126,16 +163,16 @@ nav {
 }
 
 .dropdown-menu {
-    background-color: #FFFDEB;
+    background-color: #EEF7FB;
 }
 
 a.dropdown-item:hover {
     background-color: #198A98;
-    color: #FFFDEB;
+    color: #EEF7FB;
 }
 
 .navbar-brand#bmi-brand {
-    color: #FFFDEB;
+    color: #EEF7FB;
     font-family: 'Saira Stencil One', sans-serif;
     font-size: 2rem;
 
@@ -143,7 +180,7 @@ a.dropdown-item:hover {
     position: relative;
     display: inline-block;
     overflow: hidden;
-    background: linear-gradient(to right, #01466c, #01466c 50%, #fffdeb 50%);
+    background: linear-gradient(to right, #64BBE4, #64BBE4 50%, #EEF7FB 50%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -161,11 +198,11 @@ button#search-btn {
 }
 
 i.bi.bi-bookmark-fill {
-    color: #FFFDEB;
+    color: #EEF7FB;
 }
 
 i.bi.bi-basket3-fill{
-    color: #FFFDEB;
+    color: #EEF7FB;
 }
 
 .basket-bookmark-spend {
@@ -174,7 +211,7 @@ i.bi.bi-basket3-fill{
     top: 50%;
     right: 6%;
     padding-top: 10px;
-    color: #FFFDEB;
+    color: #EEF7FB;
 }
 
 .spend {
@@ -195,10 +232,6 @@ i.bi.bi-basket3-fill{
     .spend {
         font-size: 1rem;
     }
-    form > button.btn {
-        background-color: #008080;
-        color: #FFFFFA;
-    }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -206,12 +239,12 @@ i.bi.bi-basket3-fill{
         display: block;
         padding: 8px;
         text-decoration: none;
-        color: #FFFDEB;
+        color: #EEF7FB;
         font-size: 1.1rem;
         font-weight: 800;
         position: relative;
         overflow: hidden;
-        background: linear-gradient(to right, #01466c, #01466c 50%, #fffdeb 50%);
+        background: linear-gradient(to right, #01466c, #01466c 50%, #EEF7FB 50%);
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -225,34 +258,6 @@ a.nav-link-lg:hover {
 }
     }
 
-/*index.html*/
-.main-img-container {
-    width: 100%;
-}
-
-.main-books-img {
-    display: block;
-    margin: auto;
-    width: 100%;
-    height: 200px;
-    background-image: url('/media/books-main-img.webp');
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-/*index.html MEDIA QUERIES*/
-@media only screen and (min-width: 768px) {
-    .main-books-img {
-        height: 400px;
-    }
-}
-
-@media only screen and (min-width: 1440px) {
-    .main-books-img {
-        height: 700px;
-    }
-}
-
 /* books.html*/
 .cover-img-sml {
     height: 300px;
@@ -260,7 +265,7 @@ a.nav-link-lg:hover {
 }
 
 .card.h-100.border-0 {
-    background-color: #FFFDEB;
+    background-color: #EEF7FB;
 }
 
 p.badge.rounded-pill {
@@ -268,7 +273,7 @@ p.badge.rounded-pill {
 }
 
 div.card-footer.pt-0.border-0.text-left {
-    background-color: #FFFDEB;
+    background-color: #EEF7FB;
 }
 
 .books-price {
@@ -331,3 +336,22 @@ th {
     color: #FFFFFA;
 }
 
+/* Allauth form formatting */
+.allauth-form-inner-content input {
+    border: none;
+}
+
+.allauth-form-inner-content input:focus {
+    background-color: var(--bs-body-bg);
+    border-color: #64BBE4;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(100,187,228,.45);
+}
+
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+
+.allauth-form-inner-content input::placeholder {
+    color: #4F617D;
+}
