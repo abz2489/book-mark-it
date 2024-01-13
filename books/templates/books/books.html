@@ -51,8 +51,10 @@
                                     <p class="mb-0 badge rounded-pill">{{ book.category.friendly_name}}</p>
                                 </div>
                                 <div class="card-body pb-0">
-                                    <p class="books-title mb-0">{{ book.title}}</p>
-                                    <p class="books-author mb-0">{{ book.author}}</p>
+                                    <a href="{% url 'book_summary' book.id %}">
+                                        <p class="books-title mb-0">{{ book.title}}</p>
+                                        <p class="books-author mb-0">{{ book.author}}</p>
+                                    </a>
                                 </div>
                                 <div class="card-body pb-0">
                                     
