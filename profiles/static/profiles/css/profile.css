@@ -1,0 +1,11 @@
+#profile-update-form input::placeholder {
+    color: #4F617D;
+}
+
+#profile-update-form .form-control {
+    color: #000;
+}
+
+#id_default_country option:last-child {
+    color: #4F617D;
+}
