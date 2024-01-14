@@ -15,67 +15,74 @@
 {% endblock %}
 
 {% block content %}
-    <div class="col text-center mt-3">
-        <h1 class="logo-font">Thank You!</h1>
-        <div class="container">
-            <p>Your order information is below.</p> 
-            <p>Check your <strong>{{ order.email }}</strong> inbox for your confirmation.</p>
-        </div>
-    </div>
-
-    <div class="card text-center align-items-center m-auto">
-        <div class="card-title">
-            <h4>Join our book club!</h4>
-            <p>Receive a box of our top picks every month</p>
-        </div>
-        <div class="card-body">
-            <a href="#" class="btn btn-primary">Join</a>
-        </div>
-
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Order Info</h4>
-                <p class="card-text">Order Number: {{ order.order_number }}</p>
-                <p class="card-text">Order Date: {{ order.date }}</p>
-            </div>
-
-            <div class="card-body">
-                <h4 class="card-title">Order Details</h4>
-                {% for book in order.lineitems.all %}
-                <p class="card-text">{{ book.book.title }} x {{ book.quantity }} @ £{{ book.book.price }}</p>
-                {% endfor %}
+    <div class="overlay">
+        <div class="col text-center mt-3">
+            <h1 class="logo-font">Thank You!</h1>
+            <div class="container">
+                <p>Your order information is below.</p> 
+                <p>Check your <strong>{{ order.email }}</strong> inbox for your confirmation.</p>
             </div>
         </div>
 
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Delivery</h4>
-                <p class="card-text">{{ order.full_name }}</p>
-                <p class="card-text">{{ order.street_address1 }}</p>
-                {% if order.street_address2 %}
-                    <p class="card-text">{{ order.street_address2 }}</p>
-                {% endif %}
-
-                {% if order.county %}
-                    <p class="card-text">{{ order.county }}</p>
-                {% endif %}
-                    <p class="card-text">{{ order.town_or_city }}</p>
-
-                {% if order.postcode %}
-                    <p class="card-text">{{ order.postcode }}</p>
-                {% endif %}
-                    <p class="card-text">{{ order.country }}</p>
-                    <p class="card-text">{{ order.phone_number }}</p>
+        <div class="card text-center align-items-center m-auto">
+            <div class="card-title">
+                <h4>Join our book club!</h4>
+                <p>Receive a box of our top picks every month</p>
             </div>
-        </div>
-
-        <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Billing</h4>
-                <p class="card-text">Order Total: £{{ order.order_total }}</p>
-                <p class="card-text">Delvery Cost: £{{ order.delivery_cost }}</p>
-                <p class="card-text">Grand Total: £{{ order.grand_total}}</p>
+                <a href="#" class="btn btn-primary">Join</a>
             </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Order Info</h4>
+                    <p class="card-text">Order Number: {{ order.order_number }}</p>
+                    <p class="card-text">Order Date: {{ order.date }}</p>
+                </div>
+
+                <div class="card-body">
+                    <h4 class="card-title">Order Details</h4>
+                    {% for book in order.lineitems.all %}
+                    <p class="card-text">{{ book.book.title }} x {{ book.quantity }} @ £{{ book.book.price }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Delivery</h4>
+                    <p class="card-text">{{ order.full_name }}</p>
+                    <p class="card-text">{{ order.street_address1 }}</p>
+                    {% if order.street_address2 %}
+                        <p class="card-text">{{ order.street_address2 }}</p>
+                    {% endif %}
+
+                    {% if order.county %}
+                        <p class="card-text">{{ order.county }}</p>
+                    {% endif %}
+                        <p class="card-text">{{ order.town_or_city }}</p>
+
+                    {% if order.postcode %}
+                        <p class="card-text">{{ order.postcode }}</p>
+                    {% endif %}
+                        <p class="card-text">{{ order.country }}</p>
+                        <p class="card-text">{{ order.phone_number }}</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Billing</h4>
+                    <p class="card-text">Order Total: £{{ order.order_total }}</p>
+                    <p class="card-text">Delvery Cost: £{{ order.delivery_cost }}</p>
+                    <p class="card-text">Grand Total: £{{ order.grand_total}}</p>
+                </div>
+            </div>
+            {% if from_profile %}
+                <a href="{% url 'profile' %}" class="btn btn-primary m-3">
+                    <span class="text-uppercase">Return</span>
+                </a>
+            {% endif %}
         </div>
     </div>
 
