@@ -1,6 +1,7 @@
 /*BOOTSTRAP STYLES*/
 :root {
-    --bs-link-color-rgb: 26, 169, 194;
+    --bs-link-color-rgb: 1, 70, 108;
+    --bs-link-hover-color-rgb: 25,138,152;
 }
 
 .btn-primary {
@@ -191,10 +192,6 @@ a.dropdown-item:hover {
 
 .navbar-brand#bmi-brand:hover {
     background-position: 0 100%;
-}
-
-button#search-btn {
-    background-color: #CC0069;
 }
 
 i.bi.bi-bookmark-fill {
