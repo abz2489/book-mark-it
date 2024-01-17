@@ -1,3 +1,13 @@
+/*BOOTSTRAP STYLES*/
+
+.table {
+    --bs-table-bg: #EEF7FB;
+}
+
+.order {
+    max-height: 468px;
+    overflow-y: auto;
+}
 #profile-update-form input::placeholder {
     color: #4F617D;
 }
