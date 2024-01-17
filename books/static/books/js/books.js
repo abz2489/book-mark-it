@@ -14,7 +14,7 @@ function optionUrl(option) {
 function handleEnableDisable(bookId) {
     let currentValue = parseInt($(`#id_qty_${bookId}`).val());
     let minusDisabled = currentValue < 2;
-    let plusDisabled = currentValue > 98;
+    let plusDisabled = currentValue > 19;
     $(`#decrement-qty_${bookId}`).prop('disabled', minusDisabled);
     $(`#increment-qty_${bookId}`).prop('disabled', plusDisabled);
 }
