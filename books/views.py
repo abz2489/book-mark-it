@@ -76,10 +76,21 @@ def book_summary(request, book_id):
 def add_book(request):
     """Upload new book to store"""
 
-    form = BookForm()
-    template = 'books/add_book.html'
+    if request.method == "POST":
+        form = BookForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Book successfully added!")
+            return redirect(reverse("add_book"))
+        else:
+            messages.error(request, "Failed to add book! Please check the form is filled out correctly.")
+    else:
+        form = BookForm()
+
+    template = "books/add_book.html"
     context = {
-        'form': form,
+        "form": form,
     }
 
     return render(request, template, context)
+
