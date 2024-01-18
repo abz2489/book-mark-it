@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
 from .models import Category, Book
+from .forms import BookForm
 
 # Create your views here.
 def all_books(request):
@@ -70,3 +71,15 @@ def book_summary(request, book_id):
         "book": book,
     }
     return render(request, "books/book_summary.html", context)
+
+
+def add_book(request):
+    """Upload new book to store"""
+
+    form = BookForm()
+    template = 'books/add_book.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
