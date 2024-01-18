@@ -43,8 +43,8 @@
                                     <img class="cover-img-sml card-img-top img-fluid" src="{{ MEDIA_URL }}{{ book.cover.url }}" alt="{{ book.title }}">
                                 </a>
                                 {% else %}
-                                <a href="">
-                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ book.title }}">
+                                <a href="{% url 'book_summary' book.id %}">
+                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image.png" alt="{{ book.title }}">
                                 </a>
                                 {% endif %}
                                 <div class="card-body pb-0">
