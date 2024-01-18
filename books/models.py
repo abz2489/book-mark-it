@@ -17,12 +17,12 @@ class Category(models.Model):
 
 class Book(models.Model):
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
-    title = models.CharField(max_length=255)
-    summary = models.TextField()
-    author = models.CharField(max_length=255)
+    title = models.CharField(max_length=125)
+    summary = models.TextField(max_length=255)
+    author = models.CharField(max_length=125)
     published = models.DateField(null=True, blank=True)
     isbn = models.IntegerField()
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
     cover_url = models.URLField(max_length=1024, null=True, blank=True)
     cover = models.ImageField(null=True, blank=True)
 
