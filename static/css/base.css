@@ -93,6 +93,12 @@ body {
     color: #EEF7FB;
 }
 
+.input-border {
+    background-color: var(--bs-body-bg);
+    border-color: #64BBE4;
+    box-shadow: 0 0 0 0.25rem rgba(100,187,228,.45);
+}
+
 /*toasts*/
 #toast {
     position: absolute;
